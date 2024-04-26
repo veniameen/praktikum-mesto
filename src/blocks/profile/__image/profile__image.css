@@ -9,6 +9,47 @@
   margin: 0 29px 0 0;
 }
 
+.profile__image::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-position: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.8);
+  transition: 0.3s;
+  margin: 0 29px 0 0;
+}
+
+.profile__image::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  top: 50%;
+  left: 7%;
+  background: transparent url('../../../images/vector.svg') no-repeat;
+  transition: 0.3s;
+  transform: translate(-50%, -50%);
+}
+
+  .profile__image:hover::before,
+  .profile__image:hover::after,
+  .profile__image:focus-visible::before,
+  .profile__image:focus-visible::after {
+    opacity: 1;
+  }
+  
 @media screen and (max-width: 740px) {
   .profile__image {
     margin: 0 10px 0 0;

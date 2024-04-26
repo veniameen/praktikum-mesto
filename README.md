@@ -9,7 +9,7 @@ https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0
 Клонируем репозиторий
 
 ```bash
-  git clone https://github.com/veniamean/mesto
+  git clone https://github.com/veniamean/mesto.git
 ```
 
 Переходим в директорию проекта
