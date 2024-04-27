@@ -54,6 +54,7 @@ function handleEditProfileSubmit(evt) {
     .then((res) => {
       profileTitle.textContent = res.name;
       profileDescription.textContent = res.about;
+      loading(false, profileFormSubmitButton);
       closeModal(editPopup);
     })
     .catch((error) => {
@@ -76,6 +77,7 @@ function handleNewPlaceSubmit(evt) {
       cardsContainer.prepend(newCard);
       clearValidation(formNewPlace, validationConfig);
       closeModal(addPopup);
+      loading(false, cardFormSubmitButton);
       formNewPlace.reset();
     })
     .catch((error) => {
@@ -94,6 +96,7 @@ const handleFormEditAvatarSubmit = (evt) => {
     .then((res) => {
       avatar.style.backgroundImage = `url('${res.avatar}')`;
       formAvatar.reset();
+      loading(false, avatarFormSubmitButton);
       closeModal(popupAvatarEdit);
     })
     .catch((error) => {
@@ -115,6 +118,11 @@ function openCard(cardName, imageSrc) {
 //Пока ожидаем ответ сервера добавляес три точки
 function loading(isLoading, button) {
   button.textContent = isLoading ? "Сохранение..." : "Сохранить";
+  if(isLoading){
+    button.setAttribute('disabled', true)
+  } else {
+    button.setAttribute('disabled', false)
+  }
 }
 
 //@done: загружаем с сервера
