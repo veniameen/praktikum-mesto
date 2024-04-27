@@ -93,6 +93,7 @@ const handleFormEditAvatarSubmit = (evt) => {
   patchAvatar(avatarLinkInput.value)
     .then((res) => {
       avatar.style.backgroundImage = `url('${res.avatar}')`;
+      formAvatar.reset();
       closeModal(popupAvatarEdit);
     })
     .catch((error) => {
@@ -102,14 +103,6 @@ const handleFormEditAvatarSubmit = (evt) => {
       loading(false, avatarFormSubmitButton);
     });
 };
-
-// @done: Функция открытия попапа
-function openEditProfilePopup() {
-  nameInput.value = profileTitle.textContent;
-  descriptionInput.value = profileDescription.textContent;
-  clearValidation(formEditProfile, validationConfig);
-  openModal(editPopup);
-}
 
 // @done: Функция открытия попапа карточки
 function openCard(cardName, imageSrc) {
@@ -147,17 +140,16 @@ formEditProfile.addEventListener("submit", handleEditProfileSubmit);
 formNewPlace.addEventListener("submit", handleNewPlaceSubmit);
 formAvatar.addEventListener("submit", handleFormEditAvatarSubmit);
 buttonOpenEditProfile.addEventListener("click", () => {
+  nameInput.value = profileTitle.textContent;
+  descriptionInput.value = profileDescription.textContent;
   clearValidation(formEditProfile, validationConfig);
-  openEditProfilePopup();
+  openModal(editPopup);
 });
 buttonOpenAddCard.addEventListener("click", () => {
-  clearValidation(formNewPlace, validationConfig);
   openModal(addPopup);
 });
 popupAvatarEditOpen.addEventListener("click", () => {
-  clearValidation(formEdit, validationConfig);
   openModal(popupAvatarEdit);
-  formAvatar.reset();
 });
 // Обработчик закрытия попапов по клику на крестик
 closeButtons.forEach((button) => {

@@ -47,7 +47,7 @@ function createCard(cardTemplate, data, deleteCard, likeHandler, openCard, userI
 
 // @done: Функция удаления карточки
 function deleteCard(evt, id) {
-  Promise.all([deleteOwnCard(id), deleteLike(id)])
+  deleteOwnCard(id)
     .then(() => {
       evt.target.closest(".places__item").remove();
     })
